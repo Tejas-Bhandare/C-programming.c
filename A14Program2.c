@@ -1,28 +1,36 @@
 /*
   Problem Statement :
-    Accept N numbers from user and display all such elements which are multiples of 11.
+    Accept N numbers from user and return difference between frequency of even number and odd numbers.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+int FrequencyDiff(int Arr[], int iLength)
 {
-  int iCnt = 0;
+  int iCnt = 0, iEvenCount = 0, iOddCount = 0, iDifference = 0;
 
   for (iCnt = 0; iCnt < iLength; iCnt++)
   {
-    if (Arr[iCnt] % 11 == 0)
+    if (Arr[iCnt] % 2 == 0)
     {
-      printf("%d ", Arr[iCnt]);
+      iEvenCount++;
+    }
+    else
+    {
+      iOddCount++;
     }
   }
+
+  iDifference = iEvenCount - iOddCount;
+
+  return iDifference;
 }
 
 int main()
 {
 
-  int iSize = 0, iCnt = 0;
+  int iSize = 0, iCnt = 0, iRet = 0;
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +52,9 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
+  iRet = FrequencyDiff(p, iSize);
 
-  IsMultipleOf11(p, iSize);
+  printf("Difference between frequency of Even numbers and Odd numbers is : %d\n", iRet);
 
   free(p);
 

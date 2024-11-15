@@ -1,28 +1,33 @@
 /*
   Problem Statement :
-    Accept N numbers from user and display all such elements which are multiples of 11.
+    Accept N numbers from user check whether that numbers contains 11 in it or not.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+bool CheckIs11Present(int Arr[], int iLength)
 {
-  int iCnt = 0;
+  int iCnt = 0, bIs11Found = false;
 
   for (iCnt = 0; iCnt < iLength; iCnt++)
   {
-    if (Arr[iCnt] % 11 == 0)
+    if (Arr[iCnt] == 11)
     {
-      printf("%d ", Arr[iCnt]);
+      bIs11Found = true;
+      return bIs11Found;
     }
   }
+
+  return bIs11Found;
 }
 
 int main()
 {
 
   int iSize = 0, iCnt = 0;
+  bool iRet = false;
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +49,16 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
+  iRet = CheckIs11Present(p, iSize);
 
-  IsMultipleOf11(p, iSize);
+  if (iRet == true)
+  {
+    printf("11 is present");
+  }
+  else
+  {
+    printf("11 is absent");
+  }
 
   free(p);
 

@@ -1,28 +1,31 @@
 /*
   Problem Statement :
-    Accept N numbers from user and display all such elements which are multiples of 11.
+    Accept N numbers from user and accept one another number as NO ,return index of first occurrence of that NO.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+int IndexOfFirstOcc(int Arr[], int iLength, int iNo)
 {
   int iCnt = 0;
 
   for (iCnt = 0; iCnt < iLength; iCnt++)
   {
-    if (Arr[iCnt] % 11 == 0)
+    if (Arr[iCnt] == iNo)
     {
-      printf("%d ", Arr[iCnt]);
+      return iCnt;
     }
   }
+
+  return -1;
 }
 
 int main()
 {
 
-  int iSize = 0, iCnt = 0;
+  int iSize = 0, iCnt = 0, iRet = 0, iNum = 0;
+
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +47,19 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
+  printf("Enter number to check first occurence :\n");
+  scanf("%d", &iNum);
 
-  IsMultipleOf11(p, iSize);
+  iRet = IndexOfFirstOcc(p, iSize, iNum);
+
+  if (iRet == -1)
+  {
+    printf("There is no such number");
+  }
+  else
+  {
+    printf("First occurence index of %d is : %d\n", iNum, iRet);
+  }
 
   free(p);
 

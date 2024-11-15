@@ -6,23 +6,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+int CountEvenNums(int Arr[], int iLength)
 {
-  int iCnt = 0;
+  int iCnt = 0, iEvenCnt = 0;
 
   for (iCnt = 0; iCnt < iLength; iCnt++)
   {
-    if (Arr[iCnt] % 11 == 0)
+    if (Arr[iCnt] % 2 == 0)
     {
-      printf("%d ", Arr[iCnt]);
+      iEvenCnt++;
     }
   }
+  return iEvenCnt;
 }
 
 int main()
 {
 
-  int iSize = 0, iCnt = 0;
+  int iSize = 0, iCnt = 0, iRet = 0;
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +45,9 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
+  iRet = CountEvenNums(p, iSize);
 
-  IsMultipleOf11(p, iSize);
+  printf("Count of Even numbers is : %d\n", iRet);
 
   free(p);
 

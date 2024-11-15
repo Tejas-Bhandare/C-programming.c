@@ -1,28 +1,37 @@
 /*
   Problem Statement :
-    Accept N numbers from user and display all such elements which are multiples of 11.
+    Accept N numbers from user and display summation of digits of each number.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+void PrintDigitsSum(int Arr[], int iLength)
 {
   int iCnt = 0;
 
-  for (iCnt = 0; iCnt < iLength; iCnt++)
+  for (iCnt = iLength - 1; iCnt >= 0; iCnt--)
   {
-    if (Arr[iCnt] % 11 == 0)
+    int iDigit = 0;
+    int iDigitsSum = 0;
+    int iNo = Arr[iCnt];
+
+    while (iNo > 0)
     {
-      printf("%d ", Arr[iCnt]);
+      iDigit = iNo % 10;
+      iDigitsSum = iDigitsSum + iDigit;
+      iNo = iNo / 10;
     }
+
+    printf("Addition of digits of %d is  : %d\n", Arr[iCnt], iDigitsSum);
   }
 }
 
 int main()
 {
 
-  int iSize = 0, iCnt = 0;
+  int iSize = 0, iCnt = 0, iValue1 = 0, iValue2 = 0;
+
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +53,7 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
-
-  IsMultipleOf11(p, iSize);
+  PrintDigitsSum(p, iSize);
 
   free(p);
 

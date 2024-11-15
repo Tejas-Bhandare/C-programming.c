@@ -1,29 +1,28 @@
 /*
   Problem Statement :
-    Accept N numbers from user and return difference between summation of even elements and summation of odd elements.
+    Accept N numbers from user and return the difference between largest and smallest number.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int Difference(int Arr[], int iLength)
+int MinMaxDiff(int Arr[], int iLength)
 {
-  int iEvenSum = 0, iOddSum = 0, iDifference = 0, iCnt = 0;
+  int iCnt = 0, iMin = Arr[0], iMax = 0, iDifference = 0;
 
-  for (iCnt = 0; iCnt < iLength; iCnt++)
+  for (iCnt = iLength - 1; iCnt >= 0; iCnt--)
   {
-    if (Arr[iCnt] % 2 == 0)
+    if (Arr[iCnt] > iMax)
     {
-      iEvenSum = iEvenSum + Arr[iCnt];
+      iMax = Arr[iCnt];
     }
-    else
+    if (Arr[iCnt] < iMin)
     {
-      iOddSum = iOddSum + Arr[iCnt];
+      iMin = Arr[iCnt];
     }
   }
 
-  iDifference = iEvenSum - iOddSum;
-
+  iDifference = iMax - iMin;
   return iDifference;
 }
 
@@ -31,6 +30,7 @@ int main()
 {
 
   int iSize = 0, iCnt = 0, iRet = 0;
+
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -52,9 +52,9 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  iRet = Difference(p, iSize);
+  iRet = MinMaxDiff(p, iSize);
 
-  printf("Result is %d ", iRet);
+  printf("Difference between Largest and Smallest numbers is : %d\n", iRet);
 
   free(p);
 

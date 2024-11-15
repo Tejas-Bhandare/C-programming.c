@@ -1,28 +1,31 @@
 /*
   Problem Statement :
-    Accept N numbers from user and display all such elements which are multiples of 11.
+    Accept N numbers from user and accept one another number as NO, return frequency of NO form it.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void IsMultipleOf11(int Arr[], int iLength)
+int FrequencyOfNo(int Arr[], int iLength, int iNo)
 {
-  int iCnt = 0;
+  int iCnt = 0, iCount = 0;
 
   for (iCnt = 0; iCnt < iLength; iCnt++)
   {
-    if (Arr[iCnt] % 11 == 0)
+    if (Arr[iCnt] == iNo)
     {
-      printf("%d ", Arr[iCnt]);
+      iCount++;
     }
   }
+
+  return iCount;
 }
 
 int main()
 {
 
-  int iSize = 0, iCnt = 0;
+  int iSize = 0, iCnt = 0, iRet = 0, iNum = 0;
+
   int *p = NULL;
 
   printf("Enter number of elements :\n");
@@ -44,9 +47,12 @@ int main()
     scanf("%d", &p[iCnt]);
   }
 
-  printf("Numbers which are multiples of 11 are :\n");
+  printf("Enter number to check frequency :\n");
+  scanf("%d", &iNum);
 
-  IsMultipleOf11(p, iSize);
+  iRet = FrequencyOfNo(p, iSize, iNum);
+
+  printf("Frequency of %d is : %d\n", iNum, iRet);
 
   free(p);
 
