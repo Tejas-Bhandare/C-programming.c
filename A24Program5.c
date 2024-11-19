@@ -1,5 +1,5 @@
 /*
-// Input : row = 6, col = 6
+// Input : row = 4, col = 4
 // Output :
 
 1       2       3       4
@@ -14,12 +14,6 @@ void Display(int iRow, int iCol)
 {
   int i = 0, j = 0;
 
-  // filter
-  if (iRow != iCol)
-  {
-    printf("Invalid input \n");
-    return;
-  }
   for (i = 1; i <= iRow; i++)
   {
     for (j = 1; j <= iCol; j++)

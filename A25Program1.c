@@ -1,11 +1,11 @@
 /*
-// Input : row = 6, col = 6
+// Input : row = 4, col = 4
 // Output :
 
-1       2       3       4
-        2       3       4
-                3       4
-                        4
+*       *       *       #
+*       *       #       *
+*       #       *       *
+#       *       *       *
 
 */
 #include <stdio.h>
@@ -24,13 +24,13 @@ void Display(int iRow, int iCol)
   {
     for (j = 1; j <= iCol; j++)
     {
-      if (i <= j)
+      if ((i + j) == iRow + 1)
       {
-        printf("%d\t", j);
+        printf("#\t");
       }
       else
       {
-        printf(" \t");
+        printf("*\t");
       }
     }
     printf("\n");
