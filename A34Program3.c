@@ -1,11 +1,11 @@
 /*
   Problem Statement :
-    Write a program which accept one number and position from user and off that bit. Return modified number.
+    Write a program which accept one number and position from user and on that bit. Return modified number.
 
       Input : 10 2
-      Output : 8
-      Input : 400 5
-      Output : 384
+      Output : 10
+      Input : 10 3
+      Output : 14
 */
 
 #include <stdio.h>
@@ -15,15 +15,14 @@ typedef unsigned long ULONG;
 #define true 1
 #define false 0
 
-ULONG SetBitOff(ULONG iNo, int iPOs)
+ULONG SetBitOn(ULONG iNo, int iPOs)
 {
   ULONG iResult = 0L;
   int iMask = 0x1;
 
   iMask = iMask << (iPOs - 1);
-  iMask = ~iMask;
 
-  iResult = iNo & iMask;
+  iResult = iNo | iMask;
 
   return iResult;
 }
@@ -39,9 +38,9 @@ int main()
   printf("Enter position of bit :\n");
   scanf("%d", &iValue2);
 
-  iRet = SetBitOff(iValue1, iValue2);
+  iRet = SetBitOn(iValue1, iValue2);
 
-  printf("Number %lu after set Bit of position %d OFF \n", iValue1, iValue2);
+  printf("Number %lu after set Bit of position %d ON \n", iValue1, iValue2);
   printf("%lu", iRet);
 
   return 0;
